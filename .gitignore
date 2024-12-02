@@ -1,0 +1,10 @@
+.venv
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/Advent-of-Code-24.iml
+/Data-Sheets/Advent-of-Code24-Day1-Sheet - Sheet1.csv
+/Data-Sheets/Advent-of-Code24-Day2-Sheet1 - Sheet1.csv
+/.idea/vcs.xml
+.DS_Store
