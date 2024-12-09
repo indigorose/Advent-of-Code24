@@ -53,3 +53,57 @@ print(results.count(True))
 # for idx, res in enumerate(results):
 #     print(f"Sublist {idx + 1}: {'True' if res else 'False'}")
 
+
+# Part Two
+
+# data_list = [[7, 6, 4, 2, 1], [1, 2, 7, 8, 9], [9, 7, 6, 2, 1], [1, 3, 2, 4, 5,],
+#              [8, 6, 4, 4, 1], [1, 3, 6, 7, 9]]
+
+def dayTwoPartTwo(sublist):
+    def is_valid(lst):
+        """Helper function to check if a list satisfies the constraints."""
+        for i in range(1, len(lst)):
+            diff = lst[i] - lst[i - 1]
+            if not (1 <= abs(diff) <= 3):
+                return False
+        return True
+
+    best_sublist = None
+
+    for i in range(len(sublist)):
+        # Simulate removing the current element
+        modified_list = sublist[:i] + sublist[i + 1:]
+        if is_valid(modified_list):
+            # If valid, keep the best candidate (longest and correct order)
+            if (
+                best_sublist is None
+                or len(modified_list) > len(best_sublist)
+                or (
+                    len(modified_list) == len(best_sublist)
+                    and (
+                        all(modified_list[j] <= modified_list[j + 1] for j in range(len(modified_list) - 1))
+                        or all(modified_list[j] >= modified_list[j + 1] for j in range(len(modified_list) - 1))
+                    )
+                )
+            ):
+                best_sublist = modified_list
+
+    # If no valid modification is found, return False
+    if best_sublist is None:
+        return False
+
+    # Update the original sublist
+    sublist[:] = best_sublist
+
+    # Final check for ascending or descending order
+    is_ascending = all(sublist[i] <= sublist[i + 1] for i in range(len(sublist) - 1))
+    is_descending = all(sublist[i] >= sublist[i + 1] for i in range(len(sublist) - 1))
+
+    # Ensure the sublist is long enough and meets the order condition
+    return len(sublist) >= 4 and (is_ascending or is_descending)
+
+results2 = [dayTwoPartTwo(sublist) for sublist in data_list]
+print(results2.count(True))
+sublist3 = [1, 3, 2, 4, 5]
+print(dayTwoPartTwo(sublist3))
+print(sublist3)
