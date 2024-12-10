@@ -189,7 +189,7 @@ $(;>don't()mul(538,792)<what()*when()~select(){~mul(326,892)@(;}do()when()?when(
 
 matches = re.findall(r'mul\((\d+),\s*(\d+)\)', string)
 
-print(matches.)
+print(matches)
 sum = 0
 for tup in matches:
     sum += (int(tup[0]) * int(tup[1]))
