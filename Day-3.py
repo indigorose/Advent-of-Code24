@@ -24,3 +24,6 @@ print(sum)
 # Your puzzle answer was 181345830.
 
 # Part Two
+
+doSplitList = corruptData.split('do()')
+dontSplitList = corruptData.split('dont()')
